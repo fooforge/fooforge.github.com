@@ -369,8 +369,8 @@ function clean_logged_achievements() {
 
 function publish_achievements
 {
-    git_achievements="$(which git-achievements)"
-    git_achievements_dir="$(dirname "${git_achievements}")"
+    git_achievements="which git-achievements"
+    git_achievements_dir="${ACHIEVEMENTS_REPOSITORY}"
     if [ -L "${git_achievements}" ]; then
       case "$(dirname $(readlink ${git_achievements}))" in
         /*)
@@ -483,6 +483,7 @@ There are $total Achievements. Some achievements can be leveled up depending on 
 
 ACTIONLOGFILE="$HOME/.git-achievements-action.log"
 ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
+ACHIEVEMENTS_REPOSITORY="$HOME/Development/Personal/Repositories/fooforge.github.com"
 
 if [ ! "$1" = "achievements" ] ; then
     git "$@"
